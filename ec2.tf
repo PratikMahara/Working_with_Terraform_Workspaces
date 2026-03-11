@@ -16,7 +16,7 @@ resource aws_default_vpc default {
 
 resource aws_security_group my_security_group {
   
-name= "automate-sg"
+name= "${var.env}-automate-sg"
 description = "this will add a TF generated security group"
 vpc_id = aws_default_vpc.default.id # interpolation
 # inbound rules
@@ -55,7 +55,7 @@ tags = {
 resource "aws_instance" "my_instance" {
   for_each = tomap({
     "pratik_micro_1"="t3.small",
-  
+    "pratik_micro_2"="t3.small"
 
   })
 
